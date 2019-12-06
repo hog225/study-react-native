@@ -13,8 +13,10 @@
     - react-native 이용                    
     Android 혹은 iOS 시험 환경 구성 후 
     npx react-native init [Proj-Name]
-    개발
+    cd [myApp]
     npx react-native run-android
+
+    CTRL+M debug mode 
 
 
 ## Android 시험 환경 구성
