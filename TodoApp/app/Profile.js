@@ -14,41 +14,85 @@ const data = [{
 }]
 
 const ProfileCard = (props) => {
-    
+    const {image, name, occupation, description, onPress, showThumbnail } = props;
+    let containerStyles = [styles.cardContainer];
+
+    if (showThumbnail) {
+        containerStyles.push(styles.cardThumbnail)
+    }
+
+    return (
+        <TouchableHighlight onPress={onPress}>
+            <View style={[containerStyles]}>
+                <View style={styles.cardImageContainer}>
+                    <Image style={styles.cardImage} source={image}/>
+                </View>
+                <View>
+                    <Text style={styles.cardName}>
+                        {name}
+                    </Text>
+                </View>
+                <View style={styles.cardOccupationContainer}>
+                    <Text style={styles.cardOccupation}>
+                        {occupation}
+                    </Text>
+                </View>
+                <View>
+                    <Text style={styles.cardDescription}>
+                        {description}
+                    </Text>
+                </View>
+                <View style={{alignItems: 'center', position: 'absolute', bottom: 0}}>
+                    <BottomText>
+                        {Platform.OS}
+                    </BottomText>
+                </View>
+            </View>
+        </TouchableHighlight>
+    )
+
 }
 
-export default class Profile extends Component {
-    render(){
-        return (
-            <View style={styles.container}>
-                <View style={styles.cardContainer}>
-                    <View style={styles.cardImageContainer}>
-                        <Image style={styles.cardImage} source={userImage}>
-                        </Image>
-                    </View>
-                    <View>
-                        <Text style={styles.cardName}>
-                            Yeonggi HONG
-                        </Text>
-                    </View>
-                    <View style={styles.cardOccupationContainer}>
-                        <Text style={styles.cardOccupation}>
-                            System Developer
-                        </Text>
-                    </View>
-                    <View>
-                        <Text style={styles.cardDescription}>
-                            Yeonggi is a really great javascript developer. He 
-                            loves ising JS to vuild react native applications for ios and android
-                        </Text>
+ProfileCard.propTypes = {
+    image: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    occupation: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    showThumbnail: PropTypes.bool.isRequired,
+    onPress: PropTypes.func.isRequired
+}
 
-                    </View>
-                    <View style={{alignItems: 'center', position: 'absolute', bottom: 0}}>
-                        <BottomText>
-                            {Platform.OS}
-                        </BottomText>
-                    </View>
-                </View>
+
+export default class Profile extends Component {
+
+    constructor(props, context){
+        super(props, context);
+        this.state = {
+            data: data
+        }
+    }
+
+    handleProfileCardPress = (index) =>{
+        const showThumbnail = !this.state.data[index].showThumbnail;
+        this.setState({
+            data: update(this.state.data, {[index]: {showThumbnail:{$set:showThumbnail}}})
+            
+        })
+    }
+    render(){
+        const list = this.state.data.map(function(item, index){
+            const {image, name, occupation, description, showThumbnail } = item;
+            return <ProfileCard key={'card-' + index}
+                                image={image}
+                                name ={name}
+                                occupation = {occupation}
+                                description = {description}
+                                onPress = {this.handleProfileCardPress.bind(this, index)}
+                                showThumbnail={showThumbnail}/>
+        }, this)
+        return (
+            <View style= {styles.container}>
+                {list}
             </View>
         )
     }
@@ -58,6 +102,9 @@ export default class Profile extends Component {
 
 const profileCardColor = 'dodgerblue'
 const styles = StyleSheet.create({
+    cardThumbnail:{
+        transform: [{scale:0.2}]
+    },
     container: {
         flex: 1,
         justifyContent: 'center',
