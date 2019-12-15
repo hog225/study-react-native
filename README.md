@@ -18,6 +18,8 @@
     cd [myApp]
     npx react-native run-android
 
+    git clone 시
+    - npm install - dependency install
     CTRL+M debug mode 
 
 
