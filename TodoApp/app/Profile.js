@@ -1,5 +1,21 @@
 import React, {Component} from 'react'
-import { Platform, View, Image,Text, StyleSheet} from 'react-native'
+import { TouchableHighlight, Platform, View, Image,Text, StyleSheet} from 'react-native'
+import PropTypes from 'prop-types'
+import update from 'immutability-helper'
+
+const userImage = require('./poe.png');
+const data = [{
+    image: userImage,
+    name: 'lunch box',
+    occupation: 'React Native Developer',
+    description: 'lunch box is a really great javascript developer. He \
+    loves ising JS to vuild react native applications for ios and android',
+    showThumbnail: true
+}]
+
+const ProfileCard = (props) => {
+    
+}
 
 export default class Profile extends Component {
     render(){
@@ -7,7 +23,7 @@ export default class Profile extends Component {
             <View style={styles.container}>
                 <View style={styles.cardContainer}>
                     <View style={styles.cardImageContainer}>
-                        <Image style={styles.cardImage} source={require('./poe.png')}>
+                        <Image style={styles.cardImage} source={userImage}>
                         </Image>
                     </View>
                     <View>
