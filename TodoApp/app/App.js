@@ -5,6 +5,9 @@ import Input from './Input'
 import Button from './Button'
 import TodoList from './TodoList'
 import TabBar from './TabBar'
+import BlackWhite from './BlackWhite'
+import StyleEX from './StyleExample'
+import Profile from './Profile'
 
 let todoIndex = 0
 
@@ -19,12 +22,14 @@ class App extends Component {
             //     todoIndex,
             //     complete: false 
             // }
-            type: 'All'
+            type: 'All',
+            darkTheme: false
         }
         this.submitTodo = this.submitTodo.bind(this)
         this.toggleComplete = this.toggleComplete.bind(this)
         this.deleteTodo = this.deleteTodo.bind(this)
         this.setType = this.setType.bind(this)
+        this.toggleTheme = this.toggleTheme.bind(this)
     }
     setType (type) {
         this.setState({ type })
@@ -65,29 +70,67 @@ class App extends Component {
         })
         this.setState({ todos})
     }
-    render() {
-        const {inputValue, todos, type} = this.state
-        return (
-            <View style={styles.container}>
-                <ScrollView keyboardShouldPersistTaps='always'
-                style={styles.content}>
-                    <Heading />
-                    <Input
-                        inputValue={inputValue}
-                        inputChange={(text) => this.inputChange(text)} />
-                    
-                    <TodoList 
-                        todos = {todos} 
-                        deleteTodo = {this.deleteTodo}
-                        toggleComplete = {this.toggleComplete}
-                        type = {type}/>
-                    <Button submitTodo={this.submitTodo} />
-                    
-                </ScrollView>
-                <TabBar type={type} setType={this.setType} />
-            </View>
+    toggleTheme(){
+        this.setState({darkTheme: !this.state.darkTheme})
+    }
+    //-----------------------------------------------------------------------
+    //Profile
+    render(){
+        return(
+            <Profile></Profile>
         )
     }
+    //-----------------------------------------------------------------------
+    //StyleExampl
+    // render(){
+    //     return(
+    //         <StyleEX></StyleEX>
+
+    //     )
+    // }
+    //-----------------------------------------------------------------------
+    // Black And White
+    // render(){
+    //     const {inputValue, todos, type, darkTheme} = this.state
+    //     return (
+    //         <BlackWhite 
+    //             darkTheme = {darkTheme}
+    //             toggleTheme = {this.toggleTheme}>
+    //         </BlackWhite>    
+    //     )
+    // }
+    //-----------------------------------------------------------------------
+    // Todo app 
+    // render() {
+    //     const {inputValue, todos, type, darkTheme} = this.state
+        
+    //     return (
+    //         <View style={styles.container}>
+
+    //             <ScrollView keyboardShouldPersistTaps='always'
+    //             style={styles.content}>
+    //                 {/* Black and white 기능 */}
+    //                  <BlackWhite 
+    //                     darkTheme = {darkTheme}
+    //                     toggleTheme = {this.toggleTheme}>
+    //                 </BlackWhite>
+    //                 <Heading />
+    //                 <Input
+    //                     inputValue={inputValue}
+    //                     inputChange={(text) => this.inputChange(text)} />
+                    
+    //                 <TodoList 
+    //                     todos = {todos} 
+    //                     deleteTodo = {this.deleteTodo}
+    //                     toggleComplete = {this.toggleComplete}
+    //                     type = {type}/>
+    //                 <Button submitTodo={this.submitTodo} />
+                    
+    //             </ScrollView>
+    //             <TabBar type={type} setType={this.setType} />
+    //         </View>
+    //     )
+    // }
 }
 const styles = StyleSheet.create({
     container: {
@@ -98,7 +141,7 @@ const styles = StyleSheet.create({
     },
     content: {
         flex: 1,
-        paddingTop: 60
+        paddingTop: 20
     }
 })
 export default App
