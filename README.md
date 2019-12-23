@@ -1,5 +1,7 @@
 # React Native App
 ## 초기 세팅
+    npm 이용을 위해 nodejs 설치 필요 
+
 ### Expo 이용
 ----
     npm install -g create-react-native-app
@@ -17,6 +19,7 @@
     npx react-native init [Proj-Name]
     cd [myApp]
     npx react-native run-android
+    react-native run-ios
 
     git clone 시
     - npm install - dependency install
@@ -36,3 +39,32 @@
         Android SDK Build-Tools 23.0.1
     선택 후 설치 
     {$SDK}\emulator path를 환경변수 PATH 에 추가 
+
+## iOS 시험 환경 구성 (MAC)
+---
+    Mac book 으로 Xcode 설치 후 테스트 
+    
+    sudo gem install cocoapods
+    cd [myApp]/ios
+    pod install 
+    delete build folder
+
+    cd ..
+    react-native run-ios
+
+## Lib
+---
+    npm install --save react-native-gesture-handler react-native-reanimated
+    npm install --save uuid react-navigation react-navigation-stack react-navigation-tabs
+## Tip
+---
+    folder import 시 folder 내부에 index.js 파일이 존재 해야 한다. 
+
+## Project Struct 
+--- 
+    [myApp]
+    |---[src]
+    |   |---[components]
+    |   |---theme.js (테마관련 설정)
+    |   |---index.js (네비게이션 설정 정보)
+    

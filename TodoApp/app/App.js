@@ -8,6 +8,7 @@ import TabBar from './TabBar'
 import BlackWhite from './BlackWhite'
 import StyleEX from './StyleExample'
 import Profile from './Profile'
+import Animation from './Animation'
 
 let todoIndex = 0
 
@@ -74,12 +75,21 @@ class App extends Component {
         this.setState({darkTheme: !this.state.darkTheme})
     }
     //-----------------------------------------------------------------------
-    //Profile
+    //Animation 
     render(){
         return(
-            <Profile></Profile>
+            <Animation></Animation>
         )
     }
+    //-----------------------------------------------------------------------
+
+    //-----------------------------------------------------------------------
+    //Profile
+    // render(){
+    //     return(
+    //         <Profile></Profile>
+    //     )
+    // }
     //-----------------------------------------------------------------------
     //StyleExampl
     // render(){

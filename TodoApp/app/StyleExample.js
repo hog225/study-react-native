@@ -4,32 +4,39 @@ import { View, Text, StyleSheet} from 'react-native'
 export default class StyleExample extends Component {
     render(){
         return (
-            <View style={styles.container}>
-                <View style={styles.cardContainer}> 
-                    <Example style={
-                        {
-                            borderWidth:1, 
-                            paddingTop:50
+            // <View style={styles.container}>
+            //     <View style={styles.cardContainer}> 
+            //         <Example style={
+            //             {
+            //                 borderWidth:1, 
+            //                 paddingTop:50
                             
-                        }}>
-                        <CenteredText>border width: 1 border style </CenteredText>
-                    </Example>
+            //             }}>
+            //             <CenteredText>border width: 1 border style </CenteredText>
+            //         </Example>
 
-                    <Example style={{borderRadius: 20, paddingTop:50, paddingLeft:40}}>
-                        <CenteredText>
-                            Example 1:{"\n"} Rounded Corners
-                        </CenteredText>
-                    </Example>
+            //         <Example style={{borderRadius: 20, paddingTop:50, paddingLeft:40}}>
+            //             <CenteredText>
+            //                 Example 1:{"\n"} Rounded Corners
+            //             </CenteredText>
+            //         </Example>
 
-                    <Example style={{borderTopLeftRadius: 20, position: 'absolute', right: 0, bottom: 0}}>
-                        <CenteredText>
-                            Example 2:{"\n"} Rounded Corners
-                        </CenteredText>
-                    </Example>
-                </View>
+            //         <Example style={{borderTopLeftRadius: 20, position: 'absolute', right: 0, bottom: 0}}>
+            //             <CenteredText>
+            //                 Example 2:{"\n"} Rounded Corners
+            //             </CenteredText>
+            //         </Example>
+            //     </View>
 
 
+            // </View>
+            <View style={styles.container}>
+                
+                    <Example style={{backgroundColor: 'red'}}>center</Example>
+                    <Example style={{}}>center2</Example>
+                
             </View>
+            
         )
     }
 }
@@ -38,7 +45,15 @@ export default class StyleExample extends Component {
 //쉽게 오버라이드 
 const Example = (props) => (
     <View style={[styles.example, props.style]}>
-        {props.children}
+        <Text>
+            {props.children}
+        </Text>
+    </View>
+)
+
+const FlexContainer = (props) => (
+    <View style={[styles.example, props.style]}>
+            {props.children}
     </View>
 )
 
@@ -52,11 +67,19 @@ const CenteredText = (props) => (
 const profileCardColor = 'dodgerblue'
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        marginTop: 50,
+        alignItems: 'center',
         flexDirection: 'row',
+        justifyContent: 'flex-start',
         
-        justifyContent: 'center',
-        alignItems: 'center'
+    },
+    container1: {
+        flex: 2,
+        backgroundColor: 'red'
+    },
+    container2:{
+        flex:3,
+        backgroundColor:'green'
     },
     cardContainer:{
         backgroundColor: profileCardColor,
@@ -65,7 +88,10 @@ const styles = StyleSheet.create({
         height: 400
     },
     example:{
-        //marginBottom: 15,
+        borderWidth: 5,
+        padding: 5,
+        width: 100,
+        height: 100,
         backgroundColor: 'grey'
     },
     centeredText: {
@@ -79,6 +105,13 @@ const styles = StyleSheet.create({
         }
         //backgroundColor: 'blue'
 
+    },
+    flexContainer: {
+        width: 150,
+        height: 150,
+        borderWidth: 1,
+        margin: 10,
+        // flexDirection: 'row'
     }
 
 })
