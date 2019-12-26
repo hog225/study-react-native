@@ -5,8 +5,10 @@ import {
     StyleSheet, 
     Animated, 
     Button, 
+    ScrollView,
     TextInput, 
     TouchableOpacity,
+    TouchableHighlight,
     Easing
 } from 'react-native'
 
@@ -17,16 +19,48 @@ export default class Animation extends Component {
     animatedWidth = new Animated.Value(200)
     animatedRotation = new Animated.Value(0)
 
+    animatedTitle = new Animated.Value(-200)
+    animatedSubTitle = new Animated.Value(600)
+    animatedButton = new Animated.Value(800)
+
     state = {
         toVal: initMarginTop,
         loading: true
     }
 
     componentDidMount(){
+        this.parallelAnaimate()
         this.loadingAnimate();
         setTimeout(()=>this.setState({ loading: false}), 2000)
     }
 
+    parallelAnaimate = () => {
+        Animated.parallel([
+            Animated.timing(
+                this.animatedTitle,
+                {
+                    toValue: 200,
+                    duration: 800
+                }
+            ),
+            Animated.timing(
+                this.animatedSubTitle,
+                {
+                    toValue: 0,
+                    duration: 1400,
+                    delay: 800
+                }
+            ),
+            Animated.timing(
+                this.animatedButton,
+                {
+                    toValue: 0,
+                    duration: 1000,
+                    delay: 2200,
+                }
+            ),
+        ]).start()
+    }
     loadingAnimate = () => {
         Animated.loop(
             Animated.timing(
@@ -62,8 +96,13 @@ export default class Animation extends Component {
         ).start()
     }
     render() {
+        const rotation = this.animatedRotation.interpolate({
+            inputRange: [0, 1],
+            outputRange: ['0deg', '360deg'],
+        });
+        const { loading } = this.state;
         return (
-            <View style={styles.container}>
+            <ScrollView style={styles.container}>
                 <View style={styles.topView}>
                     <Button
                         title='Animate Box'
@@ -90,7 +129,30 @@ export default class Animation extends Component {
                         </Animated.View>
                     </View>
                 </View>
-            </View>
+                <View style={styles.under1View}>
+                    {
+                        loading ? (
+                            <Animated.Image
+                                source={require('./poe.png')}
+                                style={{width: 60, height: 60, transform: [{rotate: rotation}]}}
+                            />
+                        ) : (
+                            <Text>Welcome...</Text>
+                        )
+                    }
+
+                </View>
+                <View style={styles.under2View}>
+                    <Animated.Text style={[styles.title, {marginTop: this.animatedTitle}]}>Welcome</Animated.Text>
+                    <Animated.Text style={[styles.subTitle, {marginTop: this.animatedSubTitle}]}>Thanks for visit</Animated.Text>
+                    <Animated.View style={{marginTop: this.animatedButton}}>
+                        <TouchableHighlight style={styles.button}>
+                            <Text>Get Started !</Text>
+                        </TouchableHighlight>
+                    </Animated.View>
+
+                </View>
+            </ScrollView>
         )
     }
 }
@@ -104,21 +166,41 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         flexDirection: 'row',
         justifyContent: 'space-between',
+        borderWidth: 1,
+        borderColor: '#bee6fd'
         //backgroundColor: 'yellow'
     },
     bottomView: {
-        
+        flex: 1,
         flexDirection: 'row'
     },
     bottomLeftView: {
+        flex: 2,
         marginRight: 10,
+        borderWidth: 1,
+        borderColor: 'gray'
         //backgroundColor: 'blue',
     },
     bottomRightView:{
+        flex: 3,
+        borderWidth: 1,
+        borderColor: 'pink'
         //backgroundColor: 'green'
     },
     under1View:{
-
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 10,
+        marginTop: 10,
+        borderWidth: 1,
+        borderColor: 'black'
+    },
+    under2View:{
+        flex: 1,
+        marginTop: 10,
+        borderWidth: 1,
+        borderColor: '#cbb4c4'
     },
     box: {
         width: 100,
@@ -130,6 +212,27 @@ const styles = StyleSheet.create({
         marginHorizontal: 15,
         backgroundColor: '#ededed',
         marginTop: 20
+    },
+    title: {
+        textAlign: 'center',
+        fontSize: 20,
+        marginBottom: 12,
+    },
+    subTitle: {
+        width: '100%',
+        textAlign: 'center',
+        fontSize: 18,
+        opacity: .8,
+        
+    },
+    button: {
+        marginTop: 5,
+        backgroundColor: '#255a4a',
+        height: 30,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginHorizontal: 10,
+        marginBottom: 10,
     }
 
 });
