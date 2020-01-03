@@ -9,6 +9,7 @@ import BlackWhite from './BlackWhite'
 import StyleEX from './StyleExample'
 import Profile from './Profile'
 import Animation from './Animation'
+import Lottie from './Lottie'
 
 let todoIndex = 0
 
@@ -75,12 +76,21 @@ class App extends Component {
         this.setState({darkTheme: !this.state.darkTheme})
     }
     //-----------------------------------------------------------------------
-    //Animation 
+    //Lottie 
     render(){
         return(
-            <Animation></Animation>
+            <Lottie></Lottie>
         )
     }
+    //-----------------------------------------------------------------------
+
+    //-----------------------------------------------------------------------
+    //Animation 
+    // render(){
+    //     return(
+    //         <Animation></Animation>
+    //     )
+    // }
     //-----------------------------------------------------------------------
 
     //-----------------------------------------------------------------------

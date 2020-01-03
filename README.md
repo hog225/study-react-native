@@ -28,17 +28,26 @@
 
 ## Android 시험 환경 구성
 ---
-    * 웹 참조 - https://blog.wonhada.com/%EB%A6%AC%EC%95%A1%ED%8A%B8-%EB%84%A4%EC%9D%B4%ED%8B%B0%EB%B8%8Creact-native-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0/
-    Android Studuio 설치 필요 (AVD 도 같이 설치 되어야함)
-    SDK 관리자에서 SDK 설치 
-        Google APIs
-        Intel x86 Atom System Image
-        Intel x86 Atom_64 System Image
-        Google APIs Intel x86 Atom_64 System Image
-    Android SDK Build Tools 
-        Android SDK Build-Tools 23.0.1
-    선택 후 설치 
-    {$SDK}\emulator path를 환경변수 PATH 에 추가 
+    1. Android Studuio 설치 필요 (설치 시 아래 사항 확인)
+    - Android SDK
+    - Android SDK Platform
+    - Performance (Intel ® HAXM) (See here for AMD)
+    - Android Virtual Device
+    2. 우측 하단 Configure > SDK Manager > Appearance & Behavior > System Settings > Android SDK 
+    Show package Detail 누른 뒤 아래 내용 설치 
+        SDK Platforms 탭
+            - Android SDK Platform 28
+            - Intel x86 Atom_64 System Image or Google APIs Intel x86 Atom System Image
+        SDK Tool Tab
+            - Android SDK Build-Tools 28.0.3
+    3. 환경변수 추가 
+    - ANDROID_HOME : C:\Users\{username}\AppData\Local\Android\Sdk
+    4. 환경변수 Path 수정 
+    - C:\Users\{username}\AppData\Local\Android\Sdk\platform-tools
+    5. npx react-native run-android 로 실행 
+    - npx 를 붙혀야 해당 Project의 React-native 버전을 이용해서 App을 Build 하고 실행 하는 듯 
+        
+    
 
 ## iOS 시험 환경 구성 (MAC)
 ---
