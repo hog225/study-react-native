@@ -52,6 +52,18 @@
     cd ..
     react-native run-ios
 
+    expo 로 돌릴 시 .expo 폴더의 사용자가 root로 되어있으면 시뮬레이터를 돌리지 못함 
+    이럴 경우 아래 명령어로 변경해줌 
+    sudo chown -R yourusername:yourgroupname ~/.expo /path/to/your/project/.expo
+
+    React Native version mismatch 라고 나올 시 
+    react-native start --reset-cache
+
+    github 에서 받은 소스의 경우 아래 명령어를 이용하면 돌아 갈 수 있음 
+    ./node_modules/.bin/react-native run-ios --simulator "iPhone 11"
+
+
+
 ## Lib
 ---
     npm install --save react-native-gesture-handler react-native-reanimated
