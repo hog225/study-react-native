@@ -9,7 +9,9 @@ import BlackWhite from './BlackWhite'
 import StyleEX from './StyleExample'
 import Profile from './Profile'
 import Animation from './Animation'
-import Lottie from './Lottie'
+//import Lottie from './Lottie'
+import AnimatableEx from './AnimatableEx'
+import Animation2 from './Animation2'
 
 let todoIndex = 0
 
@@ -77,20 +79,22 @@ class App extends Component {
     }
     //-----------------------------------------------------------------------
     //Lottie 
-    render(){
-        return(
-            <Lottie></Lottie>
-        )
-    }
+    // render(){
+    //     return(
+    //         <Lottie></Lottie>
+    //     )
+    // }
     //-----------------------------------------------------------------------
 
     //-----------------------------------------------------------------------
     //Animation 
-    // render(){
-    //     return(
-    //         <Animation></Animation>
-    //     )
-    // }
+    render(){
+        return(
+            // <Animation></Animation>
+            //<AnimatableEx></AnimatableEx>
+            <Animation2></Animation2>
+        )
+    }
     //-----------------------------------------------------------------------
 
     //-----------------------------------------------------------------------
