@@ -12,6 +12,7 @@ import Animation from './Animation'
 //import Lottie from './Lottie'
 import AnimatableEx from './AnimatableEx'
 import Animation2 from './Animation2'
+import ToastEx from './ToastEx'
 
 let todoIndex = 0
 
@@ -92,7 +93,8 @@ class App extends Component {
         return(
             // <Animation></Animation>
             //<AnimatableEx></AnimatableEx>
-            <Animation2></Animation2>
+            //<Animation2></Animation2>
+            <ToastEx></ToastEx>
         )
     }
     //-----------------------------------------------------------------------

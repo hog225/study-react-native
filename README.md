@@ -68,9 +68,15 @@
     React Native version mismatch 라고 나올 시 
     react-native start --reset-cache
 
-    github 에서 받은 소스의 경우 아래 명령어를 이용하면 돌아 갈 수 있음 
-    ./node_modules/.bin/react-native run-ios --simulator "iPhone 11"
-
+    Xcode 11 과 React Native 0.57 인 상태에서 실행 
+    1. /node_modules/react-native/local-cli/runIOS/findMatchingSimulator.js 수정
+    if (!version.startsWith('iOS') && !version.startsWith('tvOS')) { continue; }
+    ->if ( !version.startsWith('com.apple.CoreSimulator.SimRuntime.iOS') && !version.startsWith('com.apple.CoreSimulator.SimRuntime.tvOS') ) { continue; }
+    if ( simulator.availability !== '(available)' && simulator.isAvailable !== 'YES' ) { continue; }
+    ->if (simulator.isAvailable !== true ) { continue; }
+    
+    2. npx react-native run-ios --simulator "iPhone 11"
+    3. xcrun simctl list devices --json <- Device list 보는 명령
 
 
 ## Lib
