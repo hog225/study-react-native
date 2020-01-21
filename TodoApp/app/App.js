@@ -95,7 +95,7 @@ class App extends Component {
             // <Animation></Animation>
             //<AnimatableEx></AnimatableEx>
             //<Animation2></Animation2>
-            // <ToastEx></ToastEx>
+            //<ToastEx></ToastEx>
             <Localization></Localization>
         )
     }

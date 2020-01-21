@@ -83,9 +83,15 @@
 ---
     npm install --save react-native-gesture-handler react-native-reanimated
     npm install --save uuid react-navigation react-navigation-stack react-navigation-tabs
-## Tip
+## Tip & Trouble Shoot
 ---
     folder import 시 folder 내부에 index.js 파일이 존재 해야 한다. 
+    유무선 동시 사용후 Android Emulator에서 React Server로 연결을 못하는 경우가 발생 할 수 있는 것 같다. 이 경우 Emulator에서 아래와 같이 한다.
+    ```
+    ctrl + M > Settings > Debug server host & port for device > localhost:8081
+    ``` 
+
+
 
 ## Project Struct 
 --- 
