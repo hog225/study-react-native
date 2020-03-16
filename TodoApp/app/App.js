@@ -14,6 +14,7 @@ import AnimatableEx from './AnimatableEx'
 import Animation2 from './Animation2'
 import ToastEx from './ToastEx'
 import Localization from './Localization'
+import SwipeListViewEx from './SwipeListViewEx'
 
 let todoIndex = 0
 
@@ -96,7 +97,8 @@ class App extends Component {
             //<AnimatableEx></AnimatableEx>
             //<Animation2></Animation2>
             //<ToastEx></ToastEx>
-            <Localization></Localization>
+            //<Localization></Localization>
+            <SwipeListViewEx></SwipeListViewEx>
         )
     }
     //-----------------------------------------------------------------------
