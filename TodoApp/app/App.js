@@ -15,6 +15,7 @@ import Animation2 from './Animation2'
 import ToastEx from './ToastEx'
 import Localization from './Localization'
 import SwipeListViewEx from './SwipeListViewEx'
+import CalProcess from './CalProcess'
 
 let todoIndex = 0
 
@@ -89,16 +90,34 @@ class App extends Component {
     // }
     //-----------------------------------------------------------------------
 
+    // //-----------------------------------------------------------------------
+    // //Animation 
+    // render(){
+    //     return(
+    //         // <Animation></Animation>
+    //         //<AnimatableEx></AnimatableEx>
+    //         //<Animation2></Animation2>
+    //         //<ToastEx></ToastEx>
+    //         //<Localization></Localization>
+    //         <SwipeListViewEx></SwipeListViewEx>
+    //     )
+    // }
+    // //-----------------------------------------------------------------------
     //-----------------------------------------------------------------------
-    //Animation 
+    //CalProcess 
+    calProcess =[
+        [" ", "50000", "주택가격", " 만원"],
+        ["-", "50000", "임차보증금", " 만원"],
+        ["+", "10", "세금", " 만원"],
+    ]
     render(){
         return(
-            // <Animation></Animation>
-            //<AnimatableEx></AnimatableEx>
-            //<Animation2></Animation2>
-            //<ToastEx></ToastEx>
-            //<Localization></Localization>
-            <SwipeListViewEx></SwipeListViewEx>
+            <CalProcess
+                processList = {this.calProcess}
+                width1={10}
+                width2={90}
+                width3={80}
+            ></CalProcess>
         )
     }
     //-----------------------------------------------------------------------
