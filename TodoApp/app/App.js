@@ -16,7 +16,7 @@ import ToastEx from './ToastEx'
 import Localization from './Localization'
 import SwipeListViewEx from './SwipeListViewEx'
 import CalProcess from './CalProcess'
-
+import NMap from './NMap'
 let todoIndex = 0
 
 class App extends Component {
@@ -104,20 +104,27 @@ class App extends Component {
     // }
     // //-----------------------------------------------------------------------
     //-----------------------------------------------------------------------
-    //CalProcess 
-    calProcess =[
-        [" ", "50000", "주택가격", " 만원"],
-        ["-", "50000", "임차보증금", " 만원"],
-        ["+", "10", "세금", " 만원"],
-    ]
+    // //CalProcess 
+    // calProcess =[
+    //     [" ", "50000", "주택가격", " 만원"],
+    //     ["-", "50000", "임차보증금", " 만원"],
+    //     ["+", "10", "세금", " 만원"],
+    // ]
+    // render(){
+    //     return(
+    //         <CalProcess
+    //             processList = {this.calProcess}
+    //             width1={10}
+    //             width2={90}
+    //             width3={80}
+    //         ></CalProcess>
+    //     )
+    // }
+    //Naver Map 
+
     render(){
         return(
-            <CalProcess
-                processList = {this.calProcess}
-                width1={10}
-                width2={90}
-                width3={80}
-            ></CalProcess>
+            <NMap />
         )
     }
     //-----------------------------------------------------------------------
